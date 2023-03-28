@@ -59,7 +59,7 @@ const Edit = (props) => {
           </form>
           <button
             onClick={() => {
-              props.handleDelete(record);
+              props.handleDelete(restaurant);
             }}
           >
             Delete this Record
