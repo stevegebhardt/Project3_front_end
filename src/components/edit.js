@@ -44,24 +44,47 @@ const Edit = (props) => {
               <input type="text" name="restImg" onChange={handleChange} />
             </div>
             <div>
-              <label htmlFor="restName">Restaurant Name:</label>
-              <input type="text" name="restName" onChange={handleChange} />
+              <label htmlFor="ranking">Ranking:</label>
+              <input type="text" name="ranking" onChange={handleChange} />
             </div>
             <div>
-              <label htmlFor="restName">Restaurant Name:</label>
-              <input type="text" name="restName" onChange={handleChange} />
+              <label htmlFor="price">Price:</label>
+              <input type="text" name="price" onChange={handleChange} />
             </div>
             <div>
-              <label htmlFor="restName">Restaurant Name:</label>
-              <input type="text" name="restName" onChange={handleChange} />
+              <label htmlFor="cuisine">Cuisine:</label>
+              <input type="text" name="cuisine" onChange={handleChange} />
             </div>
-            <div>
-              <label htmlFor="restName">Restaurant Name:</label>
-              <input type="text" name="restName" onChange={handleChange} />
-            </div>
+            <input type="submit" />
           </form>
+          <button
+            onClick={() => {
+              props.handleDelete(record);
+            }}
+          >
+            Delete this Record
+          </button>
+          <button onClick={toggleEdit}>Hide</button>
         </div>
       </>
     );
   };
+
+  return (
+    <>
+      <div>
+        {showEdit ? (
+          <EditForm />
+        ) : (
+          <>
+            <div>
+              <button onClick={toggleEdit}>Edit this Record</button>
+            </div>
+          </>
+        )}
+      </div>
+    </>
+  );
 };
+
+export default Edit;
