@@ -23,20 +23,20 @@ function App() {
       .then((response) => {
         console.log(response);
         let newRestaurants = restaurants.map((restaurant) => {
-          return Record._id !== data._id ? restaurant : data;
+          return restaurant._id !== data._id ? restaurant : data;
         });
         setRestaruants(newRestaurants);
       });
   };
 
-  const handleDelete = (data) => {
+  const handleDelete = (deletedRestaurant) => {
     axios
       .delete(
         "https://sparklyunicornmagicapp.herokuapp.com/restaurants/" +
           deletedRestaurant._id
       )
       .then((response) => {
-        let newRestaurants = restaurants.filter((restaurants) => {
+        let newRestaurants = restaurants.filter((restaurant) => {
           return restaurant._id !== deletedRestaurant._id;
         });
         setRestaruants(newRestaurants);
