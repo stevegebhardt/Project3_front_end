@@ -4,15 +4,15 @@
 const Restaurant = (props) =>{ 
     return(
         <>
-        <div class="container">
-            <div>
+        
+            <div class="image">
                 <img src={props.restaurant.restImg}/>
             </div>
-            <h3>{props.restaurant.restName}</h3>
+            <p>{props.restaurant.restName}</p>
             <p>{props.restaurant.price}</p>
             <p>{props.restaurant.ranking}</p>
             <p>{props.restaurant.adress}</p>
-        </div>
+       
         
         </>
     )

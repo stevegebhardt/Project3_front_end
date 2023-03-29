@@ -18,10 +18,10 @@ const Edit = (props) => {
     setShowEdit(!showEdit);
   };
 
-  const EditForm = () => {
+  // const EditForm = () => {
     return (
       <>
-        <div>
+        <div className="col-3">
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="restName">Restaurant Name:</label>
@@ -68,23 +68,23 @@ const Edit = (props) => {
         </div>
       </>
     );
-  };
+  // };
 
-  return (
-    <>
-      <div>
-        {showEdit ? (
-          <EditForm />
-        ) : (
-          <>
-            <div>
-              <button onClick={toggleEdit}>Edit this Record</button>
-            </div>
-          </>
-        )}
-      </div>
-    </>
-  );
+  // return (
+  //   <>
+  //     <div>
+  //       {showEdit ? (
+  //         <EditForm />
+  //       ) : (
+  //         <>
+  //           <div>
+  //             <button onClick={toggleEdit}>Edit this Record</button>
+  //           </div>
+  //         </>
+  //       )}
+  //     </div>
+  //   </>
+  // );
 };
 
 export default Edit;

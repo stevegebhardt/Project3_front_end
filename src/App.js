@@ -5,6 +5,7 @@ import Edit from "./components/edit";
 import Add from "./components/add"
 import Restaurant from "./components/restaurant"
 import "bootstrap/dist/css/bootstrap.min.css";
+import Search from "./components/search"
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
@@ -56,21 +57,33 @@ function App() {
       <div>
         <header>
           <h1>Mychelin Guide</h1>
+          <Search placeholder="Search by City or State....." data={restaurants}/>
         </header>
         <Add handleCreate={handleCreate} />
+        <div className="container">
+          <div className="row">
         {restaurants.map((restaurant) => {
           return (
             <>
-            <Restaurant restaurant={restaurants} />
+            
+            <div className="col-md-4">
+            <Restaurant restaurant={restaurant} />
+            <div className="card-body"></div>
             <Edit
               restaurant={restaurant}
               handleEdit={handleEdit}
               handleDelete={handleDelete}
             />
+            
+            </div>
+           
             </>
           );
         })}
+        </div>
+        </div>
       </div>
+      
     </>
   );
 }
