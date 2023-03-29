@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
 import Add from "./components/add";
+import Restaurant from "./components/restaurant";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
 
   const handleEdit = (data) => {
     axios
-      .put("http://localhost:3000/restaurants/" + data.id, data)
+      .put("http://localhost:3000/restaurants/" + data._id, data)
       .then((response) => {
         console.log(response);
         let newRestaurants = restaurants.map((restaurant) => {
@@ -37,6 +38,7 @@ function App() {
   };
 
   const handleDelete = (deletedRestaurant) => {
+    console.log(deletedRestaurant._id);
     axios
       .delete("http://localhost:3000/restaurants/" + deletedRestaurant._id)
       .then((response) => {
@@ -45,10 +47,6 @@ function App() {
         });
         setRestaruants(newRestaurants);
       });
-  };
-
-  const toggleEdit = () => {
-    setShowEdit(!showEdit);
   };
 
   useEffect(() => {
@@ -62,21 +60,17 @@ function App() {
           <h1>Mychelin Guide</h1>
         </header>
         <Add handleCreate={handleCreate} />
+
         {restaurants.map((restaurant) => {
           return (
             <>
-              {showEdit ? (
-                <>
-                  <Edit
-                    restaurant={restaurant}
-                    handleEdit={handleEdit}
-                    handleDelete={handleDelete}
-                    setShowEdit={setShowEdit}
-                    toggleEdit={toggleEdit}
-                  />
-                  <button onClick={toggleEdit}>Hide</button>
-                </>
-              ) : null}
+              <Restaurant restaurant={restaurant} />
+
+              <Edit
+                restaurant={restaurant}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
             </>
           );
         })}
