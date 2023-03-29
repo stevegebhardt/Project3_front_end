@@ -61,7 +61,7 @@ function App() {
         {restaurants.map((restaurant) => {
           return (
             <>
-            <Restaurant restaurant={restaurants}/>
+            <Restaurant restaurant={restaurants} />
             <Edit
               restaurant={restaurant}
               handleEdit={handleEdit}

@@ -1,6 +1,7 @@
 //need to figure out how to display them !
+//git isnt allowing me to push{test}
 
-const Restaurant = (props) =>{
+const Restaurant = (props) =>{ 
     return(
         <>
         <div class="container">
