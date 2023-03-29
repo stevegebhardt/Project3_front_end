@@ -2,11 +2,12 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
-import Add from "./components/add"
-import "bootstrap/dist/css/bootstrap.min.css";
+import Add from "./components/add";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
+  const [showEdit, setShowEdit] = useState(false);
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -14,14 +15,14 @@ function App() {
     });
   };
 
-  const handleCreate = (data) =>{
-    axios.post("http://localhost:3000/restaurants", data).then((response) =>{
-      console.log(response)
-      let newRestaurant = [...restaurants, response.data];
-      setRestaruants(newRestaurant)
-      console.log(newRestaurant)
-    })
-  }
+  const handleCreate = (data) => {
+    axios.post("http://localhost:3000/restaurants", data).then((response) => {
+      console.log(response);
+      let newRestaurants = [...restaurants, response.data];
+      setRestaruants(newRestaurants);
+      console.log(newRestaurants);
+    });
+  };
 
   const handleEdit = (data) => {
     axios
@@ -46,6 +47,10 @@ function App() {
       });
   };
 
+  const toggleEdit = () => {
+    setShowEdit(!showEdit);
+  };
+
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -59,11 +64,20 @@ function App() {
         <Add handleCreate={handleCreate} />
         {restaurants.map((restaurant) => {
           return (
-            <Edit
-              restaurant={restaurant}
-              handleEdit={handleEdit}
-              handleDelete={handleDelete}
-            />
+            <>
+              {showEdit ? (
+                <>
+                  <Edit
+                    restaurant={restaurant}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                    setShowEdit={setShowEdit}
+                    toggleEdit={toggleEdit}
+                  />
+                  <button onClick={toggleEdit}>Hide</button>
+                </>
+              ) : null}
+            </>
           );
         })}
       </div>
