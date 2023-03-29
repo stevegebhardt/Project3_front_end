@@ -2,24 +2,32 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
+import Add from "./components/add";
+import Restaurant from "./components/restaurant";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
+  const [showEdit, setShowEdit] = useState(false);
 
   const getRestaurants = () => {
-    axios
-      .get("https://sparklyunicornmagicapp.herokuapp.com/restaurants")
-      .then((response) => {
-        setRestaruants(response.data);
-      });
+    axios.get("http://localhost:3000/restaurants").then((response) => {
+      setRestaruants(response.data);
+    });
+  };
+
+  const handleCreate = (data) => {
+    axios.post("http://localhost:3000/restaurants", data).then((response) => {
+      console.log(response);
+      let newRestaurants = [...restaurants, response.data];
+      setRestaruants(newRestaurants);
+      console.log(newRestaurants);
+    });
   };
 
   const handleEdit = (data) => {
     axios
-      .put(
-        "https://sparklyunicornmagicapp.herokuapp.com/restaurants/" + data.id,
-        data
-      )
+      .put("http://localhost:3000/restaurants/" + data._id, data)
       .then((response) => {
         console.log(response);
         let newRestaurants = restaurants.map((restaurant) => {
@@ -30,11 +38,9 @@ function App() {
   };
 
   const handleDelete = (deletedRestaurant) => {
+    console.log(deletedRestaurant._id);
     axios
-      .delete(
-        "https://sparklyunicornmagicapp.herokuapp.com/restaurants/" +
-          deletedRestaurant._id
-      )
+      .delete("http://localhost:3000/restaurants/" + deletedRestaurant._id)
       .then((response) => {
         let newRestaurants = restaurants.filter((restaurant) => {
           return restaurant._id !== deletedRestaurant._id;
@@ -53,13 +59,19 @@ function App() {
         <header>
           <h1>Mychelin Guide</h1>
         </header>
+        <Add handleCreate={handleCreate} />
+
         {restaurants.map((restaurant) => {
           return (
-            <Edit
-              restaurant={restaurant}
-              handleEdit={handleEdit}
-              handleDelete={handleDelete}
-            />
+            <>
+              <Restaurant restaurant={restaurant} />
+
+              <Edit
+                restaurant={restaurant}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            </>
           );
         })}
       </div>
