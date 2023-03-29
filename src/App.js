@@ -2,6 +2,8 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
+import Add from "./components/add"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
@@ -11,6 +13,15 @@ function App() {
       setRestaruants(response.data);
     });
   };
+
+  const handleCreate = (data) =>{
+    axios.post("http://localhost:3000/restaurants", data).then((response) =>{
+      console.log(response)
+      let newRestaurant = [...restaurants, response.data];
+      setRestaruants(newRestaurant)
+      console.log(newRestaurant)
+    })
+  }
 
   const handleEdit = (data) => {
     axios
@@ -45,6 +56,7 @@ function App() {
         <header>
           <h1>Mychelin Guide</h1>
         </header>
+        <Add handleCreate={handleCreate} />
         {restaurants.map((restaurant) => {
           return (
             <Edit
