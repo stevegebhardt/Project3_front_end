@@ -8,7 +8,6 @@ import Restaurant from "./components/restaurant";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
-  const [showEdit, setShowEdit] = useState(false);
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
