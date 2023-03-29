@@ -11,7 +11,7 @@ function App() {
 
   const getRestaurants = () => {
     axios
-      .get("https://git.heroku.com/sparklyunicornmagicapp.git/restaurants")
+      .get("https://sparklyunicornmagicapp.herokuapp.com/restaurants")
       .then((response) => {
         setRestaruants(response.data);
       });
@@ -19,10 +19,7 @@ function App() {
 
   const handleCreate = (data) => {
     axios
-      .post(
-        "https://git.heroku.com/sparklyunicornmagicapp.git/restaurants",
-        data
-      )
+      .post("https://sparklyunicornmagicapp.herokuapp.com/restaurants", data)
       .then((response) => {
         console.log(response);
         let newRestaurants = [...restaurants, response.data];
@@ -34,8 +31,7 @@ function App() {
   const handleEdit = (data) => {
     axios
       .put(
-        "https://git.heroku.com/sparklyunicornmagicapp.git/restaurants/" +
-          data._id,
+        "https://sparklyunicornmagicapp.herokuapp.com/restaurants/" + data._id,
         data
       )
       .then((response) => {
@@ -51,7 +47,7 @@ function App() {
     console.log(deletedRestaurant._id);
     axios
       .delete(
-        "https://git.heroku.com/sparklyunicornmagicapp.git/restaurants/" +
+        "https://sparklyunicornmagicapp.herokuapp.com/restaurants/" +
           deletedRestaurant._id
       )
       .then((response) => {
