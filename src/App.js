@@ -2,6 +2,9 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
+import Add from "./components/add";
+import Restaurant from "./components/restaurant";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import Add from "./components/add"
 import Restaurant from "./components/restaurant"
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,18 +19,18 @@ function App() {
     });
   };
 
-  const handleCreate = (data) =>{
-    axios.post("http://localhost:3000/restaurants", data).then((response) =>{
-      console.log(response)
-      let newRestaurant = [...restaurants, response.data];
-      setRestaruants(newRestaurant)
-      console.log(newRestaurant)
-    })
-  }
+  const handleCreate = (data) => {
+    axios.post("http://localhost:3000/restaurants", data).then((response) => {
+      console.log(response);
+      let newRestaurants = [...restaurants, response.data];
+      setRestaruants(newRestaurants);
+      console.log(newRestaurants);
+    });
+  };
 
   const handleEdit = (data) => {
     axios
-      .put("http://localhost:3000/restaurants/" + data.id, data)
+      .put("http://localhost:3000/restaurants/" + data._id, data)
       .then((response) => {
         console.log(response);
         let newRestaurants = restaurants.map((restaurant) => {
@@ -38,6 +41,7 @@ function App() {
   };
 
   const handleDelete = (deletedRestaurant) => {
+    console.log(deletedRestaurant._id);
     axios
       .delete("http://localhost:3000/restaurants/" + deletedRestaurant._id)
       .then((response) => {
@@ -60,28 +64,20 @@ function App() {
           <Search placeholder="Search by City or State....." data={restaurants}/>
         </header>
         <Add handleCreate={handleCreate} />
-        <div className="container">
-          <div className="row">
+
         {restaurants.map((restaurant) => {
           return (
             <>
-            
-            <div className="col-md-4">
-            <Restaurant restaurant={restaurant} />
-            <div className="card-body"></div>
-            <Edit
-              restaurant={restaurant}
-              handleEdit={handleEdit}
-              handleDelete={handleDelete}
-            />
-            
-            </div>
-           
+              <Restaurant restaurant={restaurant} />
+
+              <Edit
+                restaurant={restaurant}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
             </>
           );
         })}
-        </div>
-        </div>
       </div>
       
     </>

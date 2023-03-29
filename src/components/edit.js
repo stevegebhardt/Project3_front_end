@@ -18,6 +18,7 @@ const Edit = (props) => {
     setShowEdit(!showEdit);
   };
 
+<<<<<<< HEAD
   // const EditForm = () => {
     return (
       <>
@@ -85,6 +86,96 @@ const Edit = (props) => {
   //     </div>
   //   </>
   // );
-};
+=======
+  return (
+    <>
+      {showEdit ? (
+        <>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="restName">Restaurant Name:</label>
+              <input
+                type="text"
+                name="restName"
+                onChange={handleChange}
+                value={restaurant.restName}
+              />
 
+              <label htmlFor="address">Address:</label>
+              <input
+                type="text"
+                name="address"
+                onChange={handleChange}
+                value={restaurant.address}
+              />
+
+              <label htmlFor="city">City:</label>
+              <input
+                type="text"
+                name="city"
+                onChange={handleChange}
+                value={restaurant.city}
+              />
+
+              <label htmlFor="state">State:</label>
+              <input
+                type="text"
+                name="state"
+                onChange={handleChange}
+                value={restaurant.state}
+              />
+
+              <label htmlFor="restImg">Restaurant Photo:</label>
+              <input
+                type="text"
+                name="restImg"
+                onChange={handleChange}
+                value={restaurant.restImg}
+              />
+
+              <label htmlFor="ranking">Ranking:</label>
+              <input
+                type="text"
+                name="ranking"
+                onChange={handleChange}
+                value={restaurant.ranking}
+              />
+
+              <label htmlFor="price">Price:</label>
+              <input
+                type="text"
+                name="price"
+                onChange={handleChange}
+                value={restaurant.price}
+              />
+
+              <label htmlFor="cuisine">Cuisine:</label>
+              <input
+                type="text"
+                name="cuisine"
+                onChange={handleChange}
+                value={restaurant.cuisine}
+              />
+
+              <input type="submit" />
+            </form>
+            <button
+              onClick={() => {
+                props.handleDelete(restaurant);
+              }}
+            >
+              Delete this Record
+            </button>
+            <button onClick={toggleEdit}>Cancel</button>
+          </div>
+        </>
+      ) : (
+        <>
+          <button onClick={toggleEdit}>Edit Record</button>
+        </>
+      )}
+    </>
+  );
+>>>>>>> 187e231bea110250b892d42d1881b4d4bb3539a5
+};
 export default Edit;
