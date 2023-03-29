@@ -1,7 +1,9 @@
+import react, { useState } from "react";
+
 const Restaurant = (props) => {
   return (
     <>
-      <div class="container">
+      <div className="container">
         <div>
           <img src={props.restaurant.restImg} />
         </div>
