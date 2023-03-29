@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
 import Add from "./components/add"
+import Restaurant from "./components/restaurant"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -59,11 +60,14 @@ function App() {
         <Add handleCreate={handleCreate} />
         {restaurants.map((restaurant) => {
           return (
+            <>
+            <Restaurant restaurant={restaurants}/>
             <Edit
               restaurant={restaurant}
               handleEdit={handleEdit}
               handleDelete={handleDelete}
             />
+            </>
           );
         })}
       </div>

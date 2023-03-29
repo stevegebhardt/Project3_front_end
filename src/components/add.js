@@ -19,7 +19,7 @@ const Add = (props) =>{
 
     const handleSubmit = (event) =>{
         event.preventDefault();
-        props.handlecreate(restaurant)
+        props.handleCreate(restaurant)
     }
 
     return(
@@ -34,7 +34,7 @@ const Add = (props) =>{
                   </div>
                   <input
                     type="text"
-                    name="name"
+                    name="restName"
                     onChange={handleChange}
                     value={restaurant.name}
                   />
