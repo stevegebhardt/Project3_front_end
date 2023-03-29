@@ -11,34 +11,23 @@ function App() {
   const [showEdit, setShowEdit] = useState(false);
 
   const getRestaurants = () => {
-    axios
-      .get("https://git.heroku.com/sparklyunicornmagicapp.git/restaurants")
-      .then((response) => {
-        setRestaruants(response.data);
-      });
+    axios.get("http://localhost:3000/restaurants").then((response) => {
+      setRestaruants(response.data);
+    });
   };
 
   const handleCreate = (data) => {
-    axios
-      .post(
-        "https://git.heroku.com/sparklyunicornmagicapp.git/restaurants",
-        data
-      )
-      .then((response) => {
-        console.log(response);
-        let newRestaurants = [...restaurants, response.data];
-        setRestaruants(newRestaurants);
-        console.log(newRestaurants);
-      });
+    axios.post("http://localhost:3000/restaurants", data).then((response) => {
+      console.log(response);
+      let newRestaurants = [...restaurants, response.data];
+      setRestaruants(newRestaurants);
+      console.log(newRestaurants);
+    });
   };
 
   const handleEdit = (data) => {
     axios
-      .put(
-        "https://git.heroku.com/sparklyunicornmagicapp.git/restaurants/" +
-          data._id,
-        data
-      )
+      .put("http://localhost:3000/restaurants/" + data._id, data)
       .then((response) => {
         console.log(response);
         let newRestaurants = restaurants.map((restaurant) => {
@@ -51,10 +40,7 @@ function App() {
   const handleDelete = (deletedRestaurant) => {
     console.log(deletedRestaurant._id);
     axios
-      .delete(
-        "https://git.heroku.com/sparklyunicornmagicapp.git/restaurants/" +
-          deletedRestaurant._id
-      )
+      .delete("http://localhost:3000/restaurants/" + deletedRestaurant._id)
       .then((response) => {
         let newRestaurants = restaurants.filter((restaurant) => {
           return restaurant._id !== deletedRestaurant._id;
