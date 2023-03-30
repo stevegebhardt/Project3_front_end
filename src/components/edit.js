@@ -22,8 +22,8 @@ const Edit = (props) => {
     <>
       {showEdit ? (
         <>
-          <div className="d-flex-column ">
-            <form onSubmit={handleSubmit}>
+          <div className="d-flex-column tile">
+            <form onSubmit={handleSubmit} className="d-flex-column">
               <label htmlFor="restName">Restaurant Name:</label>
               <input
                 type="text"
@@ -101,15 +101,21 @@ const Edit = (props) => {
               onClick={() => {
                 props.handleDelete(restaurant);
               }}
+              className="botton corners shadow"
             >
               Delete this Record
             </button>
-            <button onClick={toggleEdit}>Cancel</button>
+            <button onClick={toggleEdit} className="button corners shadow">
+              Cancel
+            </button>
           </div>
         </>
       ) : (
         <>
-          <button onClick={toggleEdit} className="button">
+          <button
+            onClick={toggleEdit}
+            className="button corners shadow margin-bottom"
+          >
             Edit Record
           </button>
         </>

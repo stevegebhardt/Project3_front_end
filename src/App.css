@@ -47,8 +47,13 @@ Display Properties
 .tile {
   margin: 20px 20px;
 }
-.background {
-  z-index: -1;
+.ontop {
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+.margin-bottom {
+  margin-bottom: 10px;
 }
 
 /* 
@@ -68,9 +73,6 @@ Sizing
 .name-wrap {
   max-width: 9rem;
   overflow-wrap: break-word;
-}
-.background-image {
-  object-fit: cover;
 }
 
 /* 
@@ -120,6 +122,34 @@ Asthetics
   background-image: url("https://theineventsgroup.com.au/tigfs/wp-content/uploads/2014/12/restaurant2.jpg");
   width: 100%;
   height: 500px;
-  object-fit: contain;
-  object-position: center;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+ul li {
+  list-style-type: none;
+}
+
+/* 
+Media Query
+*************/
+@media only screen and (max-width: 600px) {
+  .ontop {
+    top: 25%;
+    left: 15%;
+    max-width: 50%;
+  }
+  header {
+    font-size: small;
+  }
+  .icon {
+    height: 2rem;
+  }
+  .banner {
+    height: 200px;
+    background-position: center;
+  }
+  .title::after {
+    width: 73%;
+    left: -20px;
+  }
 }

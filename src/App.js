@@ -71,7 +71,7 @@ function App() {
             className="icon pointer"
           ></img>
         </header>
-        <div className="banner">
+        <div className="banner corners">
           <h2 className="ontop clr-primary">Where would you like to go eat?</h2>
         </div>
         {showMenu ? null : <Menu handleCreate={handleCreate} />}
