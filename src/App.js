@@ -9,6 +9,7 @@ import Search from "./components/search"
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
+  const [add, setAdd] = useState(false)
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -16,18 +17,18 @@ function App() {
     });
   };
 
-  const handleCreate = (data) => {
-    axios.post("http://localhost:3000/restaurants", data).then((response) => {
-      console.log(response);
-      let newRestaurants = [...restaurants, response.data];
-      setRestaruants(newRestaurants);
-      console.log(newRestaurants);
-    });
-  };
+  const handleCreate = (data) =>{
+    axios.post("http://localhost:3000/restaurants", data).then((response) =>{
+      console.log(response)
+      let newRestaurant = [...restaurants, response.data];
+      setRestaruants(newRestaurant)
+      console.log(newRestaurant)
+    })
+  }
 
   const handleEdit = (data) => {
     axios
-      .put("http://localhost:3000/restaurants/" + data._id, data)
+      .put("http://localhost:3000/restaurants/" + data.id, data)
       .then((response) => {
         console.log(response);
         let newRestaurants = restaurants.map((restaurant) => {
@@ -38,7 +39,6 @@ function App() {
   };
 
   const handleDelete = (deletedRestaurant) => {
-    console.log(deletedRestaurant._id);
     axios
       .delete("http://localhost:3000/restaurants/" + deletedRestaurant._id)
       .then((response) => {
@@ -49,36 +49,46 @@ function App() {
       });
   };
 
+  const addRestaurant = () =>{
+    setAdd(!add)
+  }
+
   useEffect(() => {
     getRestaurants();
   }, []);
 
   return (
-    <>
+    <div className="container">
       <div>
-        <header>
-          <h1>Mychelin Guide</h1>
+        <header className="container d-flex justify-content-between">
+          <h1 >Mychelin Guide</h1>
           <Search placeholder="Search by City or State....." data={restaurants}/>
         </header>
-        <Add handleCreate={handleCreate} />
-
+      <button class="btn btn-primary" onClick={addRestaurant}>Add Restaurant</button>
+      {add ? <Add handleCreate={handleCreate} />: null}
+          <div className="row">
         {restaurants.map((restaurant) => {
           return (
             <>
-              <Restaurant restaurant={restaurant} />
-
-              <Edit
-                restaurant={restaurant}
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
+            
+            <div className="col-md-4">
+            <Restaurant restaurant={restaurant} />
+            <Edit
+              restaurant={restaurant}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
+            </div>
+           
             </>
           );
         })}
+        </div>
       </div>
       
-    </>
+      </div>
   );
 }
 
 export default App;
+
