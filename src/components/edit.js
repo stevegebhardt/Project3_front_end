@@ -55,6 +55,13 @@ const Edit = (props) => {
                 onChange={handleChange}
                 value={restaurant.state}
               />
+              <label htmlFor="zip">Zip Code:</label>
+              <input
+                type="number"
+                name="zip"
+                onChange={handleChange}
+                value={restaurant.zip}
+              />
 
               <label htmlFor="restImg">Restaurant Photo:</label>
               <input

@@ -6,6 +6,7 @@ const Add = (props) => {
     address: "",
     city: "",
     state: "",
+    zip: Number,
     restImg: "",
     foodImg: [""],
     ranking: "",
@@ -73,6 +74,18 @@ const Add = (props) => {
                   name="state"
                   onChange={handleChange}
                   value={restaurant.state}
+                />
+              </div>
+              <br />
+              <div>
+                <div>
+                  <label htmlFor="zip">Zip Code:</label>
+                </div>
+                <input
+                  type="number"
+                  name="zip"
+                  onChange={handleChange}
+                  value={restaurant.zip}
                 />
               </div>
               <br />

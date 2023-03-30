@@ -2,12 +2,13 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
-import Add from "./components/add";
+import Menu from "./components/hambuger-menu";
 import Restaurant from "./components/restaurant";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
+  const [showMenu, setShowMenu] = useState(false);
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -48,6 +49,10 @@ function App() {
       });
   };
 
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -56,9 +61,12 @@ function App() {
     <>
       <div>
         <header>
-          <h1>Mychelin Guide</h1>
+          <div>
+            <h1>Mychelin Guide</h1>
+          </div>
+          <img src="/hamburger.svg" onClick={toggleMenu}></img>
         </header>
-        <Add handleCreate={handleCreate} />
+        {showMenu ? null : <Menu handleCreate={handleCreate} />}
 
         {restaurants.map((restaurant) => {
           return (
