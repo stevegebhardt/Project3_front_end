@@ -6,10 +6,14 @@ import Add from "./components/add"
 import Restaurant from "./components/restaurant"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Search from "./components/search"
+import Menu from "./components/hambuger-menu";
+
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
-  const [add, setAdd] = useState(false)
+  const [showMenu, setShowMenu] = useState(false);
+    const [add, setAdd] = useState(false)
+
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -17,18 +21,18 @@ function App() {
     });
   };
 
-  const handleCreate = (data) =>{
-    axios.post("http://localhost:3000/restaurants", data).then((response) =>{
-      console.log(response)
-      let newRestaurant = [...restaurants, response.data];
-      setRestaruants(newRestaurant)
-      console.log(newRestaurant)
-    })
-  }
+  const handleCreate = (data) => {
+    axios.post("http://localhost:3000/restaurants", data).then((response) => {
+      console.log(response);
+      let newRestaurants = [...restaurants, response.data];
+      setRestaruants(newRestaurants);
+      console.log(newRestaurants);
+    });
+  };
 
   const handleEdit = (data) => {
     axios
-      .put("http://localhost:3000/restaurants/" + data.id, data)
+      .put("http://localhost:3000/restaurants/" + data._id, data)
       .then((response) => {
         console.log(response);
         let newRestaurants = restaurants.map((restaurant) => {
@@ -39,6 +43,7 @@ function App() {
   };
 
   const handleDelete = (deletedRestaurant) => {
+    console.log(deletedRestaurant._id);
     axios
       .delete("http://localhost:3000/restaurants/" + deletedRestaurant._id)
       .then((response) => {
@@ -49,9 +54,11 @@ function App() {
       });
   };
 
-  const addRestaurant = () =>{
-    setAdd(!add)
-  }
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
 
   useEffect(() => {
     getRestaurants();
@@ -60,26 +67,27 @@ function App() {
   return (
     <div className="container">
       <div>
+
         <header className="container d-flex justify-content-between">
-          <h1 >Mychelin Guide</h1>
+         <h1>"My"chelin Guide</h1>
+        </div>
+          <img src="/hamburger.svg" onClick={toggleMenu}></img>
           <Search placeholder="Search by City or State....." data={restaurants}/>
         </header>
       <button class="btn btn-primary" onClick={addRestaurant}>Add Restaurant</button>
-      {add ? <Add handleCreate={handleCreate} />: null}
-          <div className="row">
+     {showMenu ? null : <Menu handleCreate={handleCreate} />}
+
         {restaurants.map((restaurant) => {
           return (
             <>
-            
-            <div className="col-md-4">
-            <Restaurant restaurant={restaurant} />
-            <Edit
-              restaurant={restaurant}
-              handleEdit={handleEdit}
-              handleDelete={handleDelete}
-            />
-            </div>
-           
+              <Restaurant restaurant={restaurant} />
+
+              <Edit
+                restaurant={restaurant}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+
             </>
           );
         })}
