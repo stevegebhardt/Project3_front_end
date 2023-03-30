@@ -4,7 +4,7 @@ import axios from "axios";
 import Edit from "./components/edit";
 import Menu from "./components/hambuger-menu";
 import Restaurant from "./components/restaurant";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
