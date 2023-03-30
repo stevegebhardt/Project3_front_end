@@ -1,6 +1,11 @@
 import react, { useState } from "react";
 
 const Restaurant = (props) => {
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
+  const toggleShow = () => {
+    setShowMoreInfo(!showMoreInfo);
+  };
+
   return (
     <>
       <div className="container">
@@ -9,8 +14,35 @@ const Restaurant = (props) => {
         </div>
         <h3>{props.restaurant.restName}</h3>
         <p>{props.restaurant.price}</p>
-        <p>{props.restaurant.ranking}</p>
-        <p>{props.restaurant.adress}</p>
+        {props.restaurant.ranking === "***" ? (
+          <>
+            <img src="./star.svg"></img>
+            <img src="./star.svg"></img>
+            <img src="./star.svg"></img>
+          </>
+        ) : props.restaurant.ranking === "**" ? (
+          <>
+            <img src="./star.svg"></img>
+            <img src="./star.svg"></img>
+          </>
+        ) : props.restaurant.ranking === "*" ? (
+          <>
+            <img src="./star.svg"></img>
+          </>
+        ) : props.restaurant.ranking === "#" ? (
+          <>
+            <img src="./bib-gourmand.svg"></img>
+          </>
+        ) : null}
+        <button type="button" onClick={toggleShow}>
+          Show More Info
+        </button>
+        {showMoreInfo ? (
+          <p>
+            {props.restaurant.address}, {props.restaurant.city},{" "}
+            {props.restaurant.state} {props.restaurant.zip}
+          </p>
+        ) : null}
       </div>
     </>
   );
