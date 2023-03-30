@@ -8,6 +8,7 @@ import Restaurant from "./components/restaurant";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
+  const [showAdd, setShowAdd] = useState(false);
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -48,6 +49,10 @@ function App() {
       });
   };
 
+  const toggleShowAdd = () => {
+    setShowAdd(!showAdd);
+  };
+
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -56,9 +61,12 @@ function App() {
     <>
       <div>
         <header>
-          <h1>Mychelin Guide</h1>
+          <div>
+            <h1>Mychelin Guide</h1>
+          </div>
+          <img src="/hamburger.svg" onClick={toggleShowAdd}></img>
         </header>
-        <Add handleCreate={handleCreate} />
+        {showAdd ? null : <Add handleCreate={handleCreate} />}
 
         {restaurants.map((restaurant) => {
           return (
