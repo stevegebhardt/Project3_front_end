@@ -59,28 +59,36 @@ function App() {
 
   return (
     <>
-      <div>
-        <header>
-          <div>
-            <h1>Mychelin Guide</h1>
+      <div className="tile">
+        <header className="d-flex space-between">
+          <div className="d-flex end">
+            <img src="/mychelin-man.jpeg" className="icon"></img>
+            <h1 className="title">"My"chelin Guide</h1>
           </div>
-          <img src="/hamburger.svg" onClick={toggleMenu}></img>
+          <img
+            src="/hamburger.svg"
+            onClick={toggleMenu}
+            className="icon pointer"
+          ></img>
         </header>
         {showMenu ? null : <Menu handleCreate={handleCreate} />}
+        <div className="d-flex list-width wrap justify-center center">
+          {restaurants.map((restaurant) => {
+            return (
+              <>
+                <div className="d-flex-column align-center space-between corners shadow tile">
+                  <Restaurant restaurant={restaurant} />
 
-        {restaurants.map((restaurant) => {
-          return (
-            <>
-              <Restaurant restaurant={restaurant} />
-
-              <Edit
-                restaurant={restaurant}
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
-            </>
-          );
-        })}
+                  <Edit
+                    restaurant={restaurant}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                  />
+                </div>
+              </>
+            );
+          })}
+        </div>
       </div>
     </>
   );

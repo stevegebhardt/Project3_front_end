@@ -10,9 +10,13 @@ const Menu = (props) => {
 
   return (
     <>
-      <div>
+      <div className="d-flex-column">
         <ul>
-          {showAdd ? null : <li onClick={toggleShowAdd}>Add a Restaurant</li>}
+          {showAdd ? null : (
+            <li onClick={toggleShowAdd} className="pointer">
+              Add a Restaurant
+            </li>
+          )}
         </ul>
         {showAdd ? (
           <>

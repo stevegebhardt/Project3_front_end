@@ -1,0 +1,109 @@
+:root {
+  --font-primary: "Bona Nova", serif;
+  --font-accent: "Caveat", cursive;
+  --clr-primary: #f3f3f3;
+  --clr-accent: #abb6be;
+  --clr-blk: #000;
+  --clr-link: #00c6cf;
+  --clr-shadow: #bbbbbbcc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 
+Display Properties
+ *******/
+.d-flex {
+  display: flex;
+}
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.space-between {
+  justify-content: space-between;
+}
+.end {
+  align-items: end;
+}
+.align-center {
+  align-items: center;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.justify-center {
+  justify-content: center;
+}
+.list-width {
+  max-width: 75%;
+}
+.center {
+  margin: 0 auto;
+}
+.tile {
+  margin: 20px 20px;
+}
+
+/* 
+Sizing
+ **********/
+.icon {
+  height: 3rem;
+}
+.icon-sm {
+  height: 1.5rem;
+}
+.img {
+  height: 9rem;
+  width: 9rem;
+  object-fit: cover;
+}
+.name-wrap {
+  max-width: 9rem;
+  overflow-wrap: break-word;
+}
+
+/* 
+Before & After Elements
+***********/
+
+.title::after {
+  content: "";
+  display: block;
+  width: 78%;
+  height: 0.15rem;
+  background-color: var(--clr-blk);
+  left: -37px;
+  position: relative;
+  top: -3px;
+}
+
+/* 
+Hover Elements
+***********/
+.pointer:hover {
+  cursor: pointer;
+}
+
+/* 
+Positioning
+**********/
+
+/* 
+Asthetics
+**********/
+.button {
+  width: 100px;
+  border: 1px solid var(--clr-accent);
+  box-shadow: 1px 1px 1px var(--clr-shadow);
+}
+.corners {
+  border-radius: 3px;
+}
+.shadow {
+  box-shadow: 2px 2px 2px var(--clr-shadow);
+}

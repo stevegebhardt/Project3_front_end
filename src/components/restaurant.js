@@ -8,43 +8,55 @@ const Restaurant = (props) => {
 
   return (
     <>
-      <div className="container">
+      <div className="d-flex-column tile space-between align-center">
         <div>
-          <img src={props.restaurant.restImg} />
+          <img src={props.restaurant.restImg} className="img corners shadow" />
         </div>
-        <h3>{props.restaurant.restName}</h3>
+        <h3 className="name-wrap">{props.restaurant.restName}</h3>
         <p>{props.restaurant.price}</p>
         {props.restaurant.ranking === "***" ? (
           <>
-            <img src="./star.svg"></img>
-            <img src="./star.svg"></img>
-            <img src="./star.svg"></img>
+            <div className="d-flex-row">
+              <img src="./star.svg" className="icon-sm"></img>
+              <img src="./star.svg" className="icon-sm"></img>
+              <img src="./star.svg" className="icon-sm"></img>
+            </div>
           </>
         ) : props.restaurant.ranking === "**" ? (
           <>
-            <img src="./star.svg"></img>
-            <img src="./star.svg"></img>
+            <div className="d-flex-row">
+              <img src="./star.svg" className="icon-sm"></img>
+              <img src="./star.svg" className="icon-sm"></img>
+            </div>
           </>
         ) : props.restaurant.ranking === "*" ? (
           <>
-            <img src="./star.svg"></img>
+            <div className="d-flex-row">
+              <img src="./star.svg" className="icon-sm"></img>
+            </div>
           </>
         ) : props.restaurant.ranking === "#" ? (
           <>
-            <img src="./bib-gourmand.svg"></img>
+            <div className="d-flex-row">
+              <img src="./bib-gourmand.svg" className="icon-sm"></img>
+            </div>
           </>
         ) : null}
-        <button type="button" onClick={toggleShow}>
+        <button
+          type="button"
+          onClick={toggleShow}
+          className="button corners shadow"
+        >
           Show More Info
         </button>
         {showMoreInfo ? (
           <>
-            <p>
+            <p className="name-wrap">
               {props.restaurant.address}, {props.restaurant.city},{" "}
               {props.restaurant.state} {props.restaurant.zip}
             </p>
             {props.restaurant.foodImg.map((foodImg) => {
-              return <img src={foodImg} />;
+              return <img src={foodImg} className="img corners shadow" />;
             })}
           </>
         ) : null}

@@ -22,7 +22,7 @@ const Edit = (props) => {
     <>
       {showEdit ? (
         <>
-          <div>
+          <div className="d-flex-column ">
             <form onSubmit={handleSubmit}>
               <label htmlFor="restName">Restaurant Name:</label>
               <input
@@ -109,7 +109,9 @@ const Edit = (props) => {
         </>
       ) : (
         <>
-          <button onClick={toggleEdit}>Edit Record</button>
+          <button onClick={toggleEdit} className="button">
+            Edit Record
+          </button>
         </>
       )}
     </>
