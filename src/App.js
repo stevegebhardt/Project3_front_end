@@ -55,8 +55,8 @@ function App() {
   return (
     <>
       <div>
-        <header>
-          <h1>Mychelin Guide</h1>
+        <header className="container d-flex justify-content-between">
+          <h1 >Mychelin Guide</h1>
           <Search placeholder="Search by City or State....." data={restaurants}/>
         </header>
         <Add handleCreate={handleCreate} />
