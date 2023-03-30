@@ -38,10 +38,15 @@ const Restaurant = (props) => {
           Show More Info
         </button>
         {showMoreInfo ? (
-          <p>
-            {props.restaurant.address}, {props.restaurant.city},{" "}
-            {props.restaurant.state} {props.restaurant.zip}
-          </p>
+          <>
+            <p>
+              {props.restaurant.address}, {props.restaurant.city},{" "}
+              {props.restaurant.state} {props.restaurant.zip}
+            </p>
+            {props.restaurant.foodImg.map((foodImg) => {
+              return <img src={foodImg} />;
+            })}
+          </>
         ) : null}
       </div>
     </>
