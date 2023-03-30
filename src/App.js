@@ -61,7 +61,7 @@ function App() {
 
   return (
     <>
-      <div className="container">
+      <div className="">
         <header className="">
           <div>
             <img src="/michelin-man.jpeg"></img>
