@@ -2,6 +2,10 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
+import Add from "./components/add"
+import Restaurant from "./components/restaurant"
+import "bootstrap/dist/css/bootstrap.min.css";
+import Search from "./components/search"
 import Menu from "./components/hambuger-menu";
 import Restaurant from "./components/restaurant";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,6 +13,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [restaurants, setRestaruants] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
+    const [add, setAdd] = useState(false)
+
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -49,24 +55,28 @@ function App() {
       });
   };
 
+
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
 
   useEffect(() => {
     getRestaurants();
   }, []);
 
   return (
-    <>
+    <div className="container">
       <div>
-        <header>
-          <div>
-            <h1>Mychelin Guide</h1>
-          </div>
+
+        <header className="container d-flex justify-content-between">
+         <h1>"My"chelin Guide</h1>
+        </div>
           <img src="/hamburger.svg" onClick={toggleMenu}></img>
+          <Search placeholder="Search by City or State....." data={restaurants}/>
         </header>
-        {showMenu ? null : <Menu handleCreate={handleCreate} />}
+      <button class="btn btn-primary" onClick={addRestaurant}>Add Restaurant</button>
+     {showMenu ? null : <Menu handleCreate={handleCreate} />}
 
         {restaurants.map((restaurant) => {
           return (
@@ -78,11 +88,14 @@ function App() {
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
               />
+
             </>
           );
         })}
+        </div>
       </div>
-    </>
+      
+      </div>
   );
 }
 
