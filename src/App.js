@@ -9,6 +9,7 @@ import Search from "./components/search"
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
+  const [add, setAdd] = useState(false)
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -48,19 +49,23 @@ function App() {
       });
   };
 
+  const addRestaurant = () =>{
+    setAdd(!add)
+  }
+
   useEffect(() => {
     getRestaurants();
   }, []);
 
   return (
-    <>
+    <div className="container">
       <div>
         <header className="container d-flex justify-content-between">
           <h1 >Mychelin Guide</h1>
           <Search placeholder="Search by City or State....." data={restaurants}/>
         </header>
-        <Add handleCreate={handleCreate} />
-        <div className="container">
+      <button class="btn btn-primary" onClick={addRestaurant}>Add Restaurant</button>
+      {add ? <Add handleCreate={handleCreate} />: null}
           <div className="row">
         {restaurants.map((restaurant) => {
           return (
@@ -68,23 +73,20 @@ function App() {
             
             <div className="col-md-4">
             <Restaurant restaurant={restaurant} />
-            <div className="card-body"></div>
             <Edit
               restaurant={restaurant}
               handleEdit={handleEdit}
               handleDelete={handleDelete}
             />
-            
             </div>
            
             </>
           );
         })}
         </div>
-        </div>
       </div>
       
-    </>
+      </div>
   );
 }
 

@@ -4,16 +4,17 @@
 const Restaurant = (props) =>{ 
     return(
         <>
-        
-            <div class="image">
+        <div className="card mb-4 box-shadow">
+            <div className="card-img-top">
                 <img src={props.restaurant.restImg}/>
             </div>
-            <p>{props.restaurant.restName}</p>
-            <p>{props.restaurant.price}</p>
-            <p>{props.restaurant.ranking}</p>
-            <p>{props.restaurant.adress}</p>
-       
-        
+            <div className="card-body">
+            <p className="card-text">{props.restaurant.restName}</p>
+            <p className="card-text">{props.restaurant.price}</p>
+            <p className="card-text">{props.restaurant.ranking}</p>
+            <p className="card-text">{props.restaurant.address}</p>
+            </div>
+        </div>
         </>
     )
 }

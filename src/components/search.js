@@ -20,10 +20,9 @@ const Search = ({placeholder, data}) =>{
 
     return(
         <div className="search">
-            <div className="searchInputs">
-                <label>Search: </label>
-                <input type="text" placeholder={placeholder} onChange={handleFilter}/>
-                <div classname="searchIcon"></div>
+            <div className="form-outline">
+                <label></label>
+                <input type="text"  className="form-control" placeholder={placeholder} onChange={handleFilter}/>
             </div>
             {filteredData.length != 0 && 
             <div className="dataResults">
