@@ -2,9 +2,6 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
-import Add from "./components/add";
-import Restaurant from "./components/restaurant";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import Add from "./components/add"
 import Restaurant from "./components/restaurant"
 import "bootstrap/dist/css/bootstrap.min.css";
