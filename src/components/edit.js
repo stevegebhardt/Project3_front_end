@@ -55,6 +55,7 @@ const Edit = (props) => {
                 onChange={handleChange}
                 value={restaurant.state}
               />
+
               <label htmlFor="zip">Zip Code:</label>
               <input
                 type="number"

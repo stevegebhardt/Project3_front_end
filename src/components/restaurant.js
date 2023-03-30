@@ -1,5 +1,6 @@
 import react, { useState } from "react";
 
+
 const Restaurant = (props) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const toggleShow = () => {
@@ -8,8 +9,8 @@ const Restaurant = (props) => {
 
   return (
     <>
-      <div className="container">
-        <div>
+      <div className="card mb-4 box-shadow">
+        <div className="card-img-top">
           <img src={props.restaurant.restImg} />
         </div>
         <h3>{props.restaurant.restName}</h3>
@@ -52,5 +53,6 @@ const Restaurant = (props) => {
     </>
   );
 };
+
 
 export default Restaurant;
