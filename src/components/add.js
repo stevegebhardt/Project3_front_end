@@ -26,7 +26,7 @@ const Add = (props) => {
   return (
     <>
       <>
-        <div className="container">
+        <div className="">
           <div className="form">
             <form onSubmit={handleSubmit}>
               <div>

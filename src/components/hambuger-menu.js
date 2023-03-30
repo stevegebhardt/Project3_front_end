@@ -17,9 +17,7 @@ const Menu = (props) => {
         {showAdd ? (
           <>
             <Add handleCreate={props.handleCreate} />
-            <button type="button" onClick={toggleShowAdd}>
-              Cancel
-            </button>
+            <button onClick={toggleShowAdd}>Cancel</button>
           </>
         ) : null}
       </div>

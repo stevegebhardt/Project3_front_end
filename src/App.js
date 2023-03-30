@@ -2,19 +2,15 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Edit from "./components/edit";
-import Add from "./components/add"
-import Restaurant from "./components/restaurant"
-import "bootstrap/dist/css/bootstrap.min.css";
-import Search from "./components/search"
-import Menu from "./components/hambuger-menu";
 import Restaurant from "./components/restaurant";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Search from "./components/search";
+import Menu from "./components/hambuger-menu";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
-    const [add, setAdd] = useState(false)
-
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -55,47 +51,51 @@ function App() {
       });
   };
 
-
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
-
 
   useEffect(() => {
     getRestaurants();
   }, []);
 
   return (
-    <div className="container">
-      <div>
-
-        <header className="container d-flex justify-content-between">
-         <h1>"My"chelin Guide</h1>
-        </div>
+    <>
+      <div className="container">
+        <header className="">
+          <div>
+            <img src="/michelin-man.jpeg"></img>
+            <h1>"My"chelin Guide</h1>
+          </div>
           <img src="/hamburger.svg" onClick={toggleMenu}></img>
-          <Search placeholder="Search by City or State....." data={restaurants}/>
+          <Search
+            placeholder="Search by City or State....."
+            data={restaurants}
+          />
         </header>
-      <button class="btn btn-primary" onClick={addRestaurant}>Add Restaurant</button>
-     {showMenu ? null : <Menu handleCreate={handleCreate} />}
-
-        {restaurants.map((restaurant) => {
-          return (
-            <>
-              <Restaurant restaurant={restaurant} />
-
-              <Edit
-                restaurant={restaurant}
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
-
-            </>
-          );
-        })}
+        <div className="">
+          <h2 className="">Where would you like to go eat?</h2>
+        </div>
+        {showMenu ? null : <Menu handleCreate={handleCreate} />}
+        <div className="">
+          {restaurants.map((restaurant) => {
+            return (
+              <>
+                <div className="col-md-4">
+                  <Restaurant restaurant={restaurant} />
+                  <div className="card-body"></div>
+                  <Edit
+                    restaurant={restaurant}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                  />
+                </div>
+              </>
+            );
+          })}
         </div>
       </div>
-      
-      </div>
+    </>
   );
 }
 
