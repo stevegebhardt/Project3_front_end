@@ -63,41 +63,46 @@ function App() {
       <div className="">
         <header className="container">
           <div>
-          <div className="nav-div">
-          <div className="inside-nav">
-            <div className='michelin'>
-              <img src="/michelin-man.jpeg"/>
+            <div className="nav-div">
+              <div className="inside-nav">
+                <div className="michelin">
+                  <img src="/michelin-man.jpeg" />
+                </div>
+                <h1>"My"chelin Guide</h1>
+              </div>
+
+              <div className="dropdown">
+                <img src="/hamburger.svg" onClick={toggleMenu}></img>
+              </div>
             </div>
-            <h1>"My"chelin Guide</h1>
           </div>
-            
-            <div className='dropdown'>
-             <img src="/hamburger.svg" onClick={toggleMenu}></img>
-            </div>
-          </div>
-          
-          </div>
+          {showMenu ? null : <Menu handleCreate={handleCreate} />}
           <Search
             placeholder="Search by City or State....."
             data={restaurants}
           />
         </header>
+
         <div className="jumbotron text-center">
           <h2 className="">Where would you like to go eat?</h2>
         </div>
-        {showMenu ? null : <Menu handleCreate={handleCreate} />}
+
         <div className="container">
-        <div className="row">
-          {restaurants.map((restaurant) => {
-            return (
-              <>
-                <div className="col-md-4">
-                  <Restaurant restaurant={restaurant} handleEdit={handleEdit} handleDelete={handleDelete}/>
-                </div>
-              </>
-            );
-          })}
-        </div>
+          <div className="row">
+            {restaurants.map((restaurant) => {
+              return (
+                <>
+                  <div className="col-md-4">
+                    <Restaurant
+                      restaurant={restaurant}
+                      handleEdit={handleEdit}
+                      handleDelete={handleDelete}
+                    />
+                  </div>
+                </>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
