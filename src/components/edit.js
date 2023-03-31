@@ -22,7 +22,8 @@ const Edit = (props) => {
     <>
       {showEdit ? (
         <>
-          <div>
+          <div className="pop-up">
+            <div className="pop-upcontent">
             <form onSubmit={handleSubmit}>
               <label htmlFor="restName">Restaurant Name:</label>
               <input
@@ -106,11 +107,12 @@ const Edit = (props) => {
               Delete this Record
             </button>
             <button onClick={toggleEdit}>Cancel</button>
+            </div>
           </div>
         </>
       ) : (
         <>
-          <button onClick={toggleEdit}>Edit Record</button>
+          <button className="btn btn-outline-dark" onClick={toggleEdit}>Edit</button>
         </>
       )}
     </>

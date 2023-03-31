@@ -26,7 +26,8 @@ const Add = (props) => {
   return (
     <>
       <>
-        <div className="">
+        <div className="pop-up">
+          <div className="pop-upcontent">
           <div className="form">
             <form onSubmit={handleSubmit}>
               <div>
@@ -149,8 +150,10 @@ const Add = (props) => {
                 />
               </div>
               <br />
-              <input type="submit" />
+              <input  className="btn btn-outline-dark" type="submit" />
+              <button  className="btn btn-outline-dark" onClick={props.toggleShowAdd}>Cancel</button>
             </form>
+          </div>
           </div>
         </div>
       </>

@@ -6,7 +6,6 @@ import Restaurant from "./components/restaurant";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Search from "./components/search";
 import Menu from "./components/hambuger-menu";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
@@ -62,37 +61,48 @@ function App() {
   return (
     <>
       <div className="">
-        <header className="">
+        <header className="container">
           <div>
-            <img src="/michelin-man.jpeg"></img>
-            <h1>"My"chelin Guide</h1>
+            <div className="nav-div">
+              <div className="inside-nav">
+                <div className="michelin">
+                  <img src="/michelin-man.jpeg" />
+                </div>
+                <h1>"My"chelin Guide</h1>
+              </div>
+
+              <div className="dropdown">
+                <img src="/hamburger.svg" onClick={toggleMenu}></img>
+              </div>
+            </div>
           </div>
-          <img src="/hamburger.svg" onClick={toggleMenu}></img>
+          {showMenu ? null : <Menu handleCreate={handleCreate} />}
           <Search
             placeholder="Search by City or State....."
             data={restaurants}
           />
         </header>
-        <div className="">
+
+        <div className="jumbotron text-center">
           <h2 className="">Where would you like to go eat?</h2>
         </div>
-        {showMenu ? null : <Menu handleCreate={handleCreate} />}
-        <div className="">
-          {restaurants.map((restaurant) => {
-            return (
-              <>
-                <div className="col-md-4">
-                  <Restaurant restaurant={restaurant} />
-                  <div className="card-body"></div>
-                  <Edit
-                    restaurant={restaurant}
-                    handleEdit={handleEdit}
-                    handleDelete={handleDelete}
-                  />
-                </div>
-              </>
-            );
-          })}
+
+        <div className="container">
+          <div className="row">
+            {restaurants.map((restaurant) => {
+              return (
+                <>
+                  <div className="col-md-4">
+                    <Restaurant
+                      restaurant={restaurant}
+                      handleEdit={handleEdit}
+                      handleDelete={handleDelete}
+                    />
+                  </div>
+                </>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

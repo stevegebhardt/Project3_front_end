@@ -12,12 +12,11 @@ const Menu = (props) => {
     <>
       <div>
         <ul>
-          {showAdd ? null : <li onClick={toggleShowAdd}>Add a Restaurant</li>}
+          {showAdd ? null : <div className="container" onClick={toggleShowAdd}><button type="button" className="btn btn-light">Add a Restaurant</button></div>}
         </ul>
         {showAdd ? (
           <>
-            <Add handleCreate={props.handleCreate} />
-            <button onClick={toggleShowAdd}>Cancel</button>
+            <Add handleCreate={props.handleCreate} toggleShowAdd={toggleShowAdd} />
           </>
         ) : null}
       </div>
