@@ -9,7 +9,7 @@ import Menu from "./components/hambuger-menu";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
