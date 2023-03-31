@@ -16,8 +16,7 @@ const Menu = (props) => {
         </ul>
         {showAdd ? (
           <>
-            <Add handleCreate={props.handleCreate} />
-            <button onClick={toggleShowAdd}>Cancel</button>
+            <Add handleCreate={props.handleCreate} toggleShowAdd={toggleShowAdd} />
           </>
         ) : null}
       </div>

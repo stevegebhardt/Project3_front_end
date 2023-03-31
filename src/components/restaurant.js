@@ -1,4 +1,5 @@
 import react, { useState } from "react";
+import Edit from "./edit";
 
 const Restaurant = (props) => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
@@ -17,58 +18,70 @@ const Restaurant = (props) => {
           <p className="card-text">{props.restaurant.price}</p>
           {props.restaurant.ranking === "***" ? (
             <>
-            <div className="star-div">
-              <div className='inside'>
-              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+              <div className="star-div">
+                <div className='inside'>
+                  <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+                </div>
+                <div className='inside'>
+                  <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+                </div>
+                <div className='inside'>
+                  <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+                </div>
               </div>
-              <div className='inside'>
-              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
-              </div>
-              <div className='inside'>
-              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
-              </div>
-            </div>
             </>
           ) : props.restaurant.ranking === "**" ? (
             <>
               <div className="star-div">
-              <div className='inside'>
-              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
-              </div>
-              <div className='inside'>
-              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
-              </div>
+                <div className='inside'>
+                  <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+                </div>
+                <div className='inside'>
+                  <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+                </div>
               </div>
             </>
           ) : props.restaurant.ranking === "*" ? (
             <>
               <div className="star-div">
-              <div className='inside'>
-              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
-              </div>
+                <div className='inside'>
+                  <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+                </div>
               </div>
             </>
           ) : props.restaurant.ranking === "#" ? (
             <>
               <img src="./bib-gourmand.svg" className="card-text"></img>
             </>
-          ) : props.restaurant.ranking === "" ?(
+          ) : props.restaurant.ranking === "" ? (
             <>
-            <div><br/></div>
+              <div><br /></div>
             </>
-          ): null}
-          <button type="button" onClick={toggleShow}>
+          ) : null}
+          <button type="button" className="btn btn-outline-dark" onClick={toggleShow}>
             Show More Info
           </button>
+          <Edit
+            restaurant={props.restaurant}
+            handleEdit={props.handleEdit}
+            handleDelete={props.handleDelete}
+          />
           {showMoreInfo ? (
             <>
-              <p>
-                {props.restaurant.address}, {props.restaurant.city},{" "}
-                {props.restaurant.state} {props.restaurant.zip}
-              </p>
-              {props.restaurant.foodImg.map((foodImg) => {
-                return <img src={foodImg} />;
-              })}
+              <div className="pop-up">
+                <div className="pop-upcontent">
+                  <p>
+                    {props.restaurant.address}, {props.restaurant.city},{" "}
+                    {props.restaurant.state} {props.restaurant.zip}
+                  </p>
+                  {props.restaurant.foodImg.map((foodImg) => {
+                    return <img src={foodImg} />;
+                  })}
+                  <button type="button" className="btn btn-outline-dark" onClick={toggleShow}>
+                    Back
+                  </button>
+                </div>
+              </div>
             </>
           ) : null}
         </div>

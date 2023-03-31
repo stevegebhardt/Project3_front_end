@@ -64,10 +64,13 @@ function App() {
         <header className="container">
           <div>
           <div className="nav-div">
+          <div className="inside-nav">
             <div className='michelin'>
               <img src="/michelin-man.jpeg"/>
             </div>
             <h1>"My"chelin Guide</h1>
+          </div>
+            
             <div className='dropdown'>
              <img src="/hamburger.svg" onClick={toggleMenu}></img>
             </div>
@@ -89,13 +92,7 @@ function App() {
             return (
               <>
                 <div className="col-md-4">
-                  <Restaurant restaurant={restaurant} />
-                  <div className="card-body"></div>
-                  <Edit
-                    restaurant={restaurant}
-                    handleEdit={handleEdit}
-                    handleDelete={handleDelete}
-                  />
+                  <Restaurant restaurant={restaurant} handleEdit={handleEdit} handleDelete={handleDelete}/>
                 </div>
               </>
             );
