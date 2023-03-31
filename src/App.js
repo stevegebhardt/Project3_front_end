@@ -8,7 +8,7 @@ import Restaurant from "./components/restaurant";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -60,7 +60,7 @@ function App() {
   return (
     <>
       <div className="tile">
-        <header className="d-flex space-between">
+        <header className="d-flex space-between margin-twenty">
           <div className="d-flex end">
             <img src="/mychelin-man.jpeg" className="icon"></img>
             <h1 className="title">"My"chelin Guide</h1>
@@ -92,6 +92,7 @@ function App() {
             );
           })}
         </div>
+        <div className="kitchen corners">b</div>
       </div>
     </>
   );

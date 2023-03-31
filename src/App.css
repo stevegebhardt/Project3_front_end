@@ -6,12 +6,14 @@
   --clr-blk: #000;
   --clr-link: #00c6cf;
   --clr-shadow: #bbbbbbcc;
+  --clr-red: #ff0000;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--font-primary);
 }
 /* 
 Display Properties
@@ -55,6 +57,9 @@ Display Properties
 .margin-bottom {
   margin-bottom: 10px;
 }
+.margin-twenty {
+  margin: 20px 20px;
+}
 
 /* 
 Sizing
@@ -73,6 +78,9 @@ Sizing
 .name-wrap {
   max-width: 9rem;
   overflow-wrap: break-word;
+}
+.min-tile-height {
+  min-height: 284px;
 }
 
 /* 
@@ -127,6 +135,17 @@ Asthetics
 }
 ul li {
   list-style-type: none;
+}
+.red {
+  color: var(--clr-red);
+}
+button {
+  font-family: var(--font-accent);
+}
+.kitchen {
+  background-image: url("https://i.pinimg.com/originals/2c/e5/83/2ce5833a66dda06b7dcbd78f228859d8.jpg");
+  height: 300px;
+  width: 100%;
 }
 
 /* 

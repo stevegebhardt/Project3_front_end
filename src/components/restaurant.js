@@ -8,7 +8,7 @@ const Restaurant = (props) => {
 
   return (
     <>
-      <div className="d-flex-column tile space-between align-center">
+      <div className="d-flex-column tile space-between align-center min-tile-height">
         <div>
           <img src={props.restaurant.restImg} className="img corners shadow" />
         </div>
@@ -17,22 +17,22 @@ const Restaurant = (props) => {
         {props.restaurant.ranking === "***" ? (
           <>
             <div className="d-flex-row">
-              <img src="./m-star.jpeg" className="icon-sm"></img>
-              <img src="./m-star.jpeg" className="icon-sm"></img>
-              <img src="./m-star.jpeg" className="icon-sm"></img>
+              <img src="/m-star.svg" className="icon-sm"></img>
+              <img src="/m-star.svg" className="icon-sm"></img>
+              <img src="/m-star.svg" className="icon-sm"></img>
             </div>
           </>
         ) : props.restaurant.ranking === "**" ? (
           <>
             <div className="d-flex-row">
-              <img src="./m-star.jpeg" className="icon-sm"></img>
-              <img src="./m-star.jpeg" className="icon-sm"></img>
+              <img src="/m-star.svg" className="icon-sm"></img>
+              <img src="/m-star.svg" className="icon-sm"></img>
             </div>
           </>
         ) : props.restaurant.ranking === "*" ? (
           <>
             <div className="d-flex-row">
-              <img src="./m-star.jpeg" className="icon-sm"></img>
+              <img src="/m-star.svg" className="icon-sm"></img>
             </div>
           </>
         ) : props.restaurant.ranking === "#" ? (
