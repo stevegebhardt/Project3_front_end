@@ -57,8 +57,14 @@ Display Properties
 .margin-bottom {
   margin-bottom: 10px;
 }
-.margin-twenty {
-  margin: 20px 20px;
+.margin-left {
+  margin-left: 50px;
+}
+.margin-bottom {
+  margin-bottom: 20px;
+}
+.align-end {
+  align-items: flex-end;
 }
 
 /* 
@@ -141,11 +147,6 @@ ul li {
 }
 button {
   font-family: var(--font-accent);
-}
-.kitchen {
-  background-image: url("https://i.pinimg.com/originals/2c/e5/83/2ce5833a66dda06b7dcbd78f228859d8.jpg");
-  height: 300px;
-  width: 100%;
 }
 
 /* 

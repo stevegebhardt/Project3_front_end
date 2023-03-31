@@ -59,8 +59,8 @@ function App() {
 
   return (
     <>
-      <div className="tile">
-        <header className="d-flex space-between margin-twenty">
+      <div className="d-flex-column margin-left margin-bottom ">
+        <header className="d-flex space-between tile">
           <div className="d-flex end">
             <img src="/mychelin-man.jpeg" className="icon"></img>
             <h1 className="title">"My"chelin Guide</h1>
@@ -71,10 +71,13 @@ function App() {
             className="icon pointer"
           ></img>
         </header>
-        <div className="banner corners">
+        {showMenu ? null : (
+          <Menu handleCreate={handleCreate} restaurants={restaurants} />
+        )}
+        <div className="banner tile corners">
           <h2 className="ontop clr-primary">Where would you like to go eat?</h2>
         </div>
-        {showMenu ? null : <Menu handleCreate={handleCreate} />}
+
         <div className="d-flex list-width wrap justify-center center">
           {restaurants.map((restaurant) => {
             return (
@@ -92,7 +95,6 @@ function App() {
             );
           })}
         </div>
-        <div className="kitchen corners">b</div>
       </div>
     </>
   );
