@@ -6,7 +6,6 @@ import Restaurant from "./components/restaurant";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Search from "./components/search";
 import Menu from "./components/hambuger-menu";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [restaurants, setRestaruants] = useState([]);
@@ -64,10 +63,17 @@ function App() {
       <div className="">
         <header className="container">
           <div>
-            <img src="/michelin-man.jpeg"></img>
+          <div className="nav-div">
+            <div className='michelin'>
+              <img src="/michelin-man.jpeg"/>
+            </div>
             <h1>"My"chelin Guide</h1>
+            <div className='dropdown'>
+             <img src="/hamburger.svg" onClick={toggleMenu}></img>
+            </div>
           </div>
-          <img src="/hamburger.svg" onClick={toggleMenu}></img>
+          
+          </div>
           <Search
             placeholder="Search by City or State....."
             data={restaurants}

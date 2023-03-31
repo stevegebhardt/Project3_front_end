@@ -13,7 +13,7 @@ const Restaurant = (props) => {
           <img src={props.restaurant.restImg} />
         </div>
         <div className="card-body">
-          <p className="card-text">{props.restaurant.restName}</p>
+          <h5 className="card-text">{props.restaurant.restName}</h5>
           <p className="card-text">{props.restaurant.price}</p>
           {props.restaurant.ranking === "***" ? (
             <>
