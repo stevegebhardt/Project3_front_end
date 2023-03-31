@@ -17,22 +17,22 @@ const Restaurant = (props) => {
         {props.restaurant.ranking === "***" ? (
           <>
             <div className="d-flex-row">
-              <img src="./star.svg" className="icon-sm"></img>
-              <img src="./star.svg" className="icon-sm"></img>
-              <img src="./star.svg" className="icon-sm"></img>
+              <img src="./m-star.jpeg" className="icon-sm"></img>
+              <img src="./m-star.jpeg" className="icon-sm"></img>
+              <img src="./m-star.jpeg" className="icon-sm"></img>
             </div>
           </>
         ) : props.restaurant.ranking === "**" ? (
           <>
             <div className="d-flex-row">
-              <img src="./star.svg" className="icon-sm"></img>
-              <img src="./star.svg" className="icon-sm"></img>
+              <img src="./m-star.jpeg" className="icon-sm"></img>
+              <img src="./m-star.jpeg" className="icon-sm"></img>
             </div>
           </>
         ) : props.restaurant.ranking === "*" ? (
           <>
             <div className="d-flex-row">
-              <img src="./star.svg" className="icon-sm"></img>
+              <img src="./m-star.jpeg" className="icon-sm"></img>
             </div>
           </>
         ) : props.restaurant.ranking === "#" ? (
