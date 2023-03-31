@@ -58,6 +58,8 @@ const Restaurant = (props) => {
               <div><br /></div>
             </>
           ) : null}
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="btn-group">
           <button type="button" className="btn btn-outline-dark" onClick={toggleShow}>
             Show More Info
           </button>
@@ -66,6 +68,8 @@ const Restaurant = (props) => {
             handleEdit={props.handleEdit}
             handleDelete={props.handleDelete}
           />
+          </div>
+          </div>
           {showMoreInfo ? (
             <>
               <div className="pop-up">
