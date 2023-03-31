@@ -33,3 +33,12 @@ img{
 .container{
   z-index: 1;
 }
+
+.star-div{
+  width: 100%;
+  display: flex;
+}
+
+.inside{
+  width: 5%;
+}

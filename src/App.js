@@ -62,7 +62,7 @@ function App() {
   return (
     <>
       <div className="">
-        <header className="">
+        <header className="container">
           <div>
             <img src="/michelin-man.jpeg"></img>
             <h1>"My"chelin Guide</h1>
@@ -73,11 +73,12 @@ function App() {
             data={restaurants}
           />
         </header>
-        <div className="">
+        <div className="jumbotron text-center">
           <h2 className="">Where would you like to go eat?</h2>
         </div>
         {showMenu ? null : <Menu handleCreate={handleCreate} />}
-        <div className="">
+        <div className="container">
+        <div className="row">
           {restaurants.map((restaurant) => {
             return (
               <>
@@ -93,6 +94,7 @@ function App() {
               </>
             );
           })}
+        </div>
         </div>
       </div>
     </>

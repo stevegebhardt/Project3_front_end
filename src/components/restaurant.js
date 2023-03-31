@@ -8,7 +8,7 @@ const Restaurant = (props) => {
 
   return (
     <>
-      <div className="card-mb4 box-shadow">
+      <div className="card mb-4 box-shadow">
         <div className="carc-img-top">
           <img src={props.restaurant.restImg} />
         </div>
@@ -17,24 +17,46 @@ const Restaurant = (props) => {
           <p className="card-text">{props.restaurant.price}</p>
           {props.restaurant.ranking === "***" ? (
             <>
-              <img src="./star.svg" className="card-text"></img>
-              <img src="./star.svg" className="card-text"></img>
-              <img src="./star.svg" className="card-text"></img>
+            <div className="star-div">
+              <div className='inside'>
+              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+              </div>
+              <div className='inside'>
+              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+              </div>
+              <div className='inside'>
+              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+              </div>
+            </div>
             </>
           ) : props.restaurant.ranking === "**" ? (
             <>
-              <img src="./star.svg" className="card-text"></img>
-              <img src="./star.svg" className="card-text"></img>
+              <div className="star-div">
+              <div className='inside'>
+              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+              </div>
+              <div className='inside'>
+              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+              </div>
+              </div>
             </>
           ) : props.restaurant.ranking === "*" ? (
             <>
-              <img src="./star.svg" className="card-text"></img>
+              <div className="star-div">
+              <div className='inside'>
+              <img src="https://guide.michelin.com/assets/images/icons/1star-1f2c04d7e6738e8a3312c9cda4b64fd0.svg" className="card-text"></img>
+              </div>
+              </div>
             </>
           ) : props.restaurant.ranking === "#" ? (
             <>
               <img src="./bib-gourmand.svg" className="card-text"></img>
             </>
-          ) : null}
+          ) : props.restaurant.ranking === "" ?(
+            <>
+            <div><br/></div>
+            </>
+          ): null}
           <button type="button" onClick={toggleShow}>
             Show More Info
           </button>
