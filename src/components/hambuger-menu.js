@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Add from "./add";
+import Search from "./search";
 
 const Menu = (props) => {
   const [showAdd, setShowAdd] = useState(false);
@@ -10,13 +11,28 @@ const Menu = (props) => {
 
   return (
     <>
-      <div>
+      <div className="d-flex-column align-end">
         <ul>
-          {showAdd ? null : <div className="container" onClick={toggleShowAdd}><button type="button" className="btn btn-light">Add a Restaurant</button></div>}
+          {showAdd ? null : (
+            <li onClick={toggleShowAdd} className="pointer">
+              Add a Restaurant
+            </li>
+          )}
+          <li>
+            <Search
+              placeholder="Search by City or State....."
+              data={props.restaurants}
+              setRestaurants={props.setRestaurants}
+              restaurants={props.restaurants}
+            />
+          </li>
         </ul>
         {showAdd ? (
           <>
-            <Add handleCreate={props.handleCreate} toggleShowAdd={toggleShowAdd} />
+            <Add handleCreate={props.handleCreate} />
+            <button type="button" onClick={toggleShowAdd}>
+              Cancel
+            </button>
           </>
         ) : null}
       </div>

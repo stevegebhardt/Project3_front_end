@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./searchbar.css";
+import axios from "axios";
 
-const Search = ({ placeholder, data }) => {
+const Search = ({ placeholder, data, props }) => {
   const [filteredData, setFilteredData] = useState([]);
 
   const handleFilter = (event) => {
