@@ -46,7 +46,7 @@ const Search = ({ placeholder, data, props }) => {
                             : value;
                         }
                       );
-                      props.setRestaruants(newRestaurant);
+                      props.setRestaurants(newRestaurant);
                     });
                 }}
               >
