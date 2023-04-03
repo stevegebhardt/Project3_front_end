@@ -6,9 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Menu from "./components/hambuger-menu";
 
 function App() {
+
   const [restaurants, setRestaurants] = useState([]);
   const [showMenu, setShowMenu] = useState(true);
   const [searchTerm, setSearchTerm] = useState("")
+
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -75,6 +77,7 @@ function App() {
               </div>
             </div>
           </div>
+
           {showMenu ? null : (
             <Menu
               handleCreate={handleCreate}
@@ -82,6 +85,7 @@ function App() {
               setRestaurants={setRestaurants}
             />
           )}
+
         </header>
 
         <div className="jumbotron text-center">
@@ -89,6 +93,7 @@ function App() {
         </div>
 
         <div className="container">
+
           <div className="search">
             <div className="form-outline">
               <label></label>
@@ -122,6 +127,7 @@ function App() {
                   </>
                 );
               })}
+
 
 
           </div>
