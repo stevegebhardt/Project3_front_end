@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import { useState } from "react";
 import Edit from "./edit";
 
 const Restaurant = (props) => {
@@ -51,21 +51,29 @@ const Restaurant = (props) => {
             </>
           ) : props.restaurant.ranking === "#" ? (
             <>
-              <img src="./bib-gourmand.svg" className="card-text"></img>
+             <div className="star-div">
+                <div className='inside'>
+                <img src="./bib-gourmand.svg" className="card-text"></img>
+                </div>
+              </div>
             </>
           ) : props.restaurant.ranking === "" ? (
             <>
               <div><br /></div>
             </>
           ) : null}
-          <button type="button" className="btn btn-outline-dark" onClick={toggleShow}>
-            Show More Info
-          </button>
-          <Edit
-            restaurant={props.restaurant}
-            handleEdit={props.handleEdit}
-            handleDelete={props.handleDelete}
-          />
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="btn-group">
+              <button type="button" className="btn btn-outline-dark" onClick={toggleShow}>
+                Show More Info
+              </button>
+              <Edit
+                restaurant={props.restaurant}
+                handleEdit={props.handleEdit}
+                handleDelete={props.handleDelete}
+              />
+            </div>
+          </div>
           {showMoreInfo ? (
             <>
               <div className="pop-up">

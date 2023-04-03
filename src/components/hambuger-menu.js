@@ -10,13 +10,17 @@ const Menu = (props) => {
 
   return (
     <>
-      <div>
-        <ul>
-          {showAdd ? null : <div className="container" onClick={toggleShowAdd}><button type="button" className="btn btn-light">Add a Restaurant</button></div>}
-        </ul>
+      <div className="d-flex-column align-end">
+
+        {showAdd ? null : (
+          <button className="btn btn-secondary" onClick={toggleShowAdd}>
+            Add a Restaurant
+          </button>
+        )}
+
         {showAdd ? (
           <>
-            <Add handleCreate={props.handleCreate} toggleShowAdd={toggleShowAdd} />
+            <Add toggleShowAdd={toggleShowAdd} handleCreate={props.handleCreate} />
           </>
         ) : null}
       </div>
