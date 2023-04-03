@@ -60,15 +60,15 @@ const Restaurant = (props) => {
           ) : null}
           <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group">
-          <button type="button" className="btn btn-outline-dark" onClick={toggleShow}>
-            Show More Info
-          </button>
-          <Edit
-            restaurant={props.restaurant}
-            handleEdit={props.handleEdit}
-            handleDelete={props.handleDelete}
-          />
-          </div>
+              <button type="button" className="btn btn-outline-dark" onClick={toggleShow}>
+                Show More Info
+              </button>
+              <Edit
+                restaurant={props.restaurant}
+                handleEdit={props.handleEdit}
+                handleDelete={props.handleDelete}
+              />
+            </div>
           </div>
           {showMoreInfo ? (
             <>

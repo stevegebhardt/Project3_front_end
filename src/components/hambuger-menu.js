@@ -12,7 +12,7 @@ const Menu = (props) => {
     <>
       <div>
         <ul>
-          {showAdd ? null : <div className="container" onClick={toggleShowAdd}><button type="button" className="btn btn-light">Add a Restaurant</button></div>}
+          {showAdd ? null : <div className="container" onClick={toggleShowAdd}><button type="button" className="btn btn-secondary">Add a Restaurant</button></div>}
         </ul>
         {showAdd ? (
           <>
