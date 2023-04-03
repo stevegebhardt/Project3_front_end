@@ -1,19 +1,18 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Edit from "./components/edit";
 import Restaurant from "./components/restaurant";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Search from "./components/search";
 import Menu from "./components/hambuger-menu";
 
 function App() {
-  const [restaurants, setRestaruants] = useState([]);
-  const [showMenu, setShowMenu] = useState(false);
+  const [restaurants, setRestaurants] = useState([]);
+  const [showMenu, setShowMenu] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("")
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
-      setRestaruants(response.data);
+      setRestaurants(response.data);
     });
   };
 
@@ -21,7 +20,7 @@ function App() {
     axios.post("http://localhost:3000/restaurants", data).then((response) => {
       console.log(response);
       let newRestaurants = [...restaurants, response.data];
-      setRestaruants(newRestaurants);
+      setRestaurants(newRestaurants);
       console.log(newRestaurants);
     });
   };
@@ -34,7 +33,7 @@ function App() {
         let newRestaurants = restaurants.map((restaurant) => {
           return restaurant._id !== data._id ? restaurant : data;
         });
-        setRestaruants(newRestaurants);
+        setRestaurants(newRestaurants);
       });
   };
 
@@ -46,7 +45,7 @@ function App() {
         let newRestaurants = restaurants.filter((restaurant) => {
           return restaurant._id !== deletedRestaurant._id;
         });
-        setRestaruants(newRestaurants);
+        setRestaurants(newRestaurants);
       });
   };
 
@@ -65,40 +64,66 @@ function App() {
           <div>
             <div className="nav-div">
               <div className="inside-nav">
-                <div className='michelin'>
+                <div className="michelin">
                   <img src="/michelin-man.jpeg" />
                 </div>
                 <h1>"My"chelin Guide</h1>
               </div>
 
-              <div className='dropdown'>
+              <div className="dropdown">
                 <img src="/hamburger.svg" onClick={toggleMenu}></img>
               </div>
             </div>
-
           </div>
+          {showMenu ? null : (
+            <Menu
+              handleCreate={handleCreate}
+              restaurants={restaurants}
+              setRestaurants={setRestaurants}
+            />
+          )}
         </header>
-        <div className="container">
-        <Search
-            placeholder="Search by City or State....."
-            data={restaurants}
-          />
-        </div>
+
         <div className="jumbotron text-center">
           <h2 className="">Where would you like to go eat?</h2>
         </div>
-        {showMenu ? null : <Menu handleCreate={handleCreate} />}
+
         <div className="container">
+          <div className="search">
+            <div className="form-outline">
+              <label></label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="search by city..."
+                onChange={(event) => { setSearchTerm(event.target.value) }}
+              />
+            </div>
+          </div>
+          <br />
           <div className="row">
-            {restaurants.map((restaurant) => {
-              return (
-                <>
-                  <div className="col-md-4">
-                    <Restaurant restaurant={restaurant} handleEdit={handleEdit} handleDelete={handleDelete} />
-                  </div>
-                </>
-              );
-            })}
+            {restaurants.filter((restaurant) => {
+              if (searchTerm == "") {
+                return restaurant;
+              } else if (restaurant.city.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+                return restaurant;
+              }
+            })
+              .map((restaurant) => {
+                return (
+                  <>
+                    <div className="col-md-4">
+                      <Restaurant
+                        restaurant={restaurant}
+                        handleEdit={handleEdit}
+                        handleDelete={handleDelete}
+                      />
+                    </div>
+                  </>
+                );
+              })}
+
+
           </div>
         </div>
       </div>

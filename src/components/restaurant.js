@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import { useState } from "react";
 import Edit from "./edit";
 
 const Restaurant = (props) => {
@@ -51,7 +51,11 @@ const Restaurant = (props) => {
             </>
           ) : props.restaurant.ranking === "#" ? (
             <>
-              <img src="./bib-gourmand.svg" className="card-text"></img>
+             <div className="star-div">
+                <div className='inside'>
+                <img src="./bib-gourmand.svg" className="card-text"></img>
+                </div>
+              </div>
             </>
           ) : props.restaurant.ranking === "" ? (
             <>
