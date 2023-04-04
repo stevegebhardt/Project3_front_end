@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Restaurant from "./components/restaurant"
+import Restaurant from "./components/restaurant";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Menu from "./components/hambuger-menu";
 
@@ -11,23 +11,30 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const getRestaurants = () => {
-    axios.get("http://localhost:3000/restaurants").then((response) => {
-      setRestaurants(response.data);
-    });
+    axios
+      .get("https://projec3-back-end.herokuapp.com/restaurants")
+      .then((response) => {
+        setRestaurants(response.data);
+      });
   };
 
   const handleCreate = (data) => {
-    axios.post("http://localhost:3000/restaurants", data).then((response) => {
-      console.log(response);
-      let newRestaurants = [...restaurants, response.data];
-      setRestaurants(newRestaurants);
-      console.log(newRestaurants);
-    });
+    axios
+      .post("https://projec3-back-end.herokuapp.com/restaurants", data)
+      .then((response) => {
+        console.log(response);
+        let newRestaurants = [...restaurants, response.data];
+        setRestaurants(newRestaurants);
+        console.log(newRestaurants);
+      });
   };
 
   const handleEdit = (data) => {
     axios
-      .put("http://localhost:3000/restaurants/" + data._id, data)
+      .put(
+        "https://projec3-back-end.herokuapp.com/restaurants/" + data._id,
+        data
+      )
       .then((response) => {
         console.log(response);
         let newRestaurants = restaurants.map((restaurant) => {
@@ -39,7 +46,10 @@ function App() {
 
   const handleDelete = (deletedRestaurant) => {
     axios
-      .delete("http://localhost:3000/restaurants/" + deletedRestaurant._id)
+      .delete(
+        "https://projec3-back-end.herokuapp.com/restaurants/" +
+          deletedRestaurant._id
+      )
       .then((response) => {
         let newRestaurants = restaurants.filter((restaurant) => {
           return restaurant._id !== deletedRestaurant._id;
@@ -138,4 +148,3 @@ function App() {
 }
 
 export default App;
-
