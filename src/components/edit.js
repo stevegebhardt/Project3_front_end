@@ -22,87 +22,107 @@ const Edit = (props) => {
     <>
       {showEdit ? (
         <>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="restName">Restaurant Name:</label>
-              <input
-                type="text"
-                name="restName"
-                onChange={handleChange}
-                value={restaurant.restName}
-              />
+          <div className="pop-up">
+            <div className="pop-upcontent">
+              <form className="form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="restName">Restaurant Name:</label>
+                  <input className="form-control"
+                    type="text"
+                    name="restName"
+                    onChange={handleChange}
+                    value={restaurant.restName}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="address">Address:</label>
+                  <input className="form-control"
+                    type="text"
+                    name="address"
+                    onChange={handleChange}
+                    value={restaurant.address}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="city">City:</label>
+                  <input className="form-control"
+                    type="text"
+                    name="city"
+                    onChange={handleChange}
+                    value={restaurant.city}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="state">State:</label>
+                  <input className="form-control"
+                    type="text"
+                    name="state"
+                    onChange={handleChange}
+                    value={restaurant.state}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="zip">Zip Code:</label>
+                  <input className="form-control"
+                    type="number"
+                    name="zip"
+                    onChange={handleChange}
+                    value={restaurant.zip}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="restImg">Restaurant Photo:</label>
+                  <input className="form-control"
+                    type="text"
+                    name="restImg"
+                    onChange={handleChange}
+                    value={restaurant.restImg}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="ranking">Ranking:</label>
+                  <input className="form-control"
+                    type="text"
+                    name="ranking"
+                    onChange={handleChange}
+                    value={restaurant.ranking}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="price">Price:</label>
+                  <input className="form-control"
+                    type="text"
+                    name="price"
+                    onChange={handleChange}
+                    value={restaurant.price}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="cuisine">Cuisine:</label>
+                  <input className="form-control"
+                    type="text"
+                    name="cuisine"
+                    onChange={handleChange}
+                    value={restaurant.cuisine}
+                  />
+                </div>
+                <input className="btn btn-outline-dark" type="submit" />
+                <button className="btn btn-outline-dark"
+                  onClick={() => {
+                    props.handleDelete(restaurant);
+                  }}
+                >
+                  Delete
+                </button>
+                <button className="btn btn-outline-dark" onClick={toggleEdit}>Cancel</button>
+              </form>
 
-              <label htmlFor="address">Address:</label>
-              <input
-                type="text"
-                name="address"
-                onChange={handleChange}
-                value={restaurant.address}
-              />
-
-              <label htmlFor="city">City:</label>
-              <input
-                type="text"
-                name="city"
-                onChange={handleChange}
-                value={restaurant.city}
-              />
-
-              <label htmlFor="state">State:</label>
-              <input
-                type="text"
-                name="state"
-                onChange={handleChange}
-                value={restaurant.state}
-              />
-
-              <label htmlFor="restImg">Restaurant Photo:</label>
-              <input
-                type="text"
-                name="restImg"
-                onChange={handleChange}
-                value={restaurant.restImg}
-              />
-
-              <label htmlFor="ranking">Ranking:</label>
-              <input
-                type="text"
-                name="ranking"
-                onChange={handleChange}
-                value={restaurant.ranking}
-              />
-
-              <label htmlFor="price">Price:</label>
-              <input
-                type="text"
-                name="price"
-                onChange={handleChange}
-                value={restaurant.price}
-              />
-
-              <label htmlFor="cuisine">Cuisine:</label>
-              <input
-                type="text"
-                name="cuisine"
-                onChange={handleChange}
-                value={restaurant.cuisine}
-              />
-
-              <input type="submit" />
-            </form>
-            <button
-              onClick={() => {
-                props.handleDelete(restaurant);
-              }}
-            >
-              Delete this Record
-            </button>
-            <button onClick={toggleEdit}>Cancel</button>
+            </div>
           </div>
         </>
       ) : (
         <>
-          <button onClick={toggleEdit}>Edit Record</button>
+          <button className="btn btn-outline-dark" onClick={toggleEdit}>Edit</button>
         </>
       )}
     </>

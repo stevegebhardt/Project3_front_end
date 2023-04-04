@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from 'react'
 
 const Add = (props) => {
   const [restaurant, setRestaurant] = useState({
@@ -6,6 +6,7 @@ const Add = (props) => {
     address: "",
     city: "",
     state: "",
+    zip: Number,
     restImg: "",
     foodImg: [""],
     ranking: "",
@@ -13,38 +14,40 @@ const Add = (props) => {
     cuisine: "",
   });
 
-  const handleChange = (event) => {
-    setRestaurant({ ...restaurant, [event.target.name]: event.target.value });
-  };
+    const handleChange = (event) => {
+        setRestaurant({ ...restaurant, [event.target.name]: event.target.value });
+    };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     props.handleCreate(restaurant);
+    props.toggleShowAdd();
+    props.toggleMenu();
   };
+
 
   return (
     <>
       <>
-        <div className="container">
-          <div className="form">
-            <form onSubmit={handleSubmit}>
-              <div>
-                <div>
-                  <label htmlFor="name">Name:</label>
-                </div>
+        <div className="pop-up">
+          <div className="pop-upcontent">
+            <form className="form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Name:</label>
                 <input
+                  className="form-control"
                   type="text"
                   name="restName"
                   onChange={handleChange}
-                  value={restaurant.name}
+                  value={restaurant.restName}
                 />
               </div>
               <br />
-              <div>
-                <div>
-                  <label htmlFor="address">Address:</label>
-                </div>
+              <div className="form-group">
+                <label htmlFor="address">Address:</label>
                 <input
+                  className="form-control"
                   type="text"
                   name="address"
                   onChange={handleChange}
@@ -52,11 +55,10 @@ const Add = (props) => {
                 />
               </div>
               <br />
-              <div>
-                <div>
-                  <label htmlFor="city">City:</label>
-                </div>
+              <div className="form-group">
+                <label htmlFor="city">City:</label>
                 <input
+                  className="form-control"
                   type="text"
                   name="city"
                   onChange={handleChange}
@@ -64,11 +66,10 @@ const Add = (props) => {
                 />
               </div>
               <br />
-              <div>
-                <div>
-                  <label htmlFor="state">State:</label>
-                </div>
+              <div className="form-group">
+                <label htmlFor="state">State:</label>
                 <input
+                  className="form-control"
                   type="text"
                   name="state"
                   onChange={handleChange}
@@ -76,11 +77,21 @@ const Add = (props) => {
                 />
               </div>
               <br />
-              <div>
-                <div>
-                  <label htmlFor="restImg">Restaurant Image:</label>
-                </div>
+              <div className="form-group">
+                <label htmlFor="zip">Zip Code:</label>
                 <input
+                  className="form-control"
+                  type="number"
+                  name="zip"
+                  onChange={handleChange}
+                  value={restaurant.zip}
+                />
+              </div>
+              <br />
+              <div className="form-group">
+                <label htmlFor="restImg">Restaurant Image:</label>
+                <input
+                  className="form-control"
                   type="text"
                   name="restImg"
                   onChange={handleChange}
@@ -88,11 +99,10 @@ const Add = (props) => {
                 />
               </div>
               <br />
-              <div>
-                <div>
-                  <label htmlFor="foodImg">Food Image:</label>
-                </div>
+              <div className="form-group">
+                <label htmlFor="foodImg">Food Image:</label>
                 <input
+                  className="form-control"
                   type="text"
                   name="foodImg"
                   onChange={handleChange}
@@ -100,11 +110,10 @@ const Add = (props) => {
                 />
               </div>
               <br />
-              <div>
-                <div>
-                  <label htmlFor="ranking">Ranking:</label>
-                </div>
+              <div className="form-group">
+                <label htmlFor="ranking">Ranking:</label>
                 <input
+                  className="form-control"
                   type="text"
                   name="ranking"
                   onChange={handleChange}
@@ -112,11 +121,10 @@ const Add = (props) => {
                 />
               </div>
               <br />
-              <div>
-                <div>
-                  <label htmlFor="price">Price:</label>
-                </div>
+              <div className="form-group">
+                <label htmlFor="price">Price:</label>
                 <input
+                  className="form-control"
                   type="text"
                   name="price"
                   onChange={handleChange}
@@ -124,11 +132,10 @@ const Add = (props) => {
                 />
               </div>
               <br />
-              <div>
-                <div>
-                  <label htmlFor="cuisine">Cuisine:</label>
-                </div>
+              <div className="form-group">
+                <label htmlFor="cuisine">Cuisine:</label>
                 <input
+                  className="form-control"
                   type="text"
                   name="cuisine"
                   onChange={handleChange}
@@ -136,7 +143,13 @@ const Add = (props) => {
                 />
               </div>
               <br />
-              <input type="submit" />
+              <input className="btn btn-outline-dark" type="submit" />
+              <button
+                className="btn btn-outline-dark"
+                onClick={props.toggleShowAdd}
+              >
+                Cancel
+              </button>
             </form>
           </div>
         </div>
