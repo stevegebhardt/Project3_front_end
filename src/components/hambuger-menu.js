@@ -11,7 +11,6 @@ const Menu = (props) => {
   return (
     <>
       <div className="d-flex-column align-end">
-
         {showAdd ? null : (
           <button className="btn btn-secondary" onClick={toggleShowAdd}>
             Add a Restaurant
@@ -20,7 +19,11 @@ const Menu = (props) => {
 
         {showAdd ? (
           <>
-            <Add toggleShowAdd={toggleShowAdd} handleCreate={props.handleCreate} />
+            <Add
+              toggleShowAdd={toggleShowAdd}
+              handleCreate={props.handleCreate}
+              toggleMenu={props.toggleMenu}
+            />
           </>
         ) : null}
       </div>

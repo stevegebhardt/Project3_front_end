@@ -6,11 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Menu from "./components/hambuger-menu";
 
 function App() {
-
   const [restaurants, setRestaurants] = useState([]);
   const [showMenu, setShowMenu] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("")
-
+  const [searchTerm, setSearchTerm] = useState("");
 
   const getRestaurants = () => {
     axios.get("http://localhost:3000/restaurants").then((response) => {
@@ -82,9 +80,9 @@ function App() {
               handleCreate={handleCreate}
               restaurants={restaurants}
               setRestaurants={setRestaurants}
+              toggleMenu={toggleMenu}
             />
           )}
-
         </header>
 
         <div className="jumbotron text-center">
@@ -92,27 +90,33 @@ function App() {
         </div>
 
         <div className="container">
-
           <div className="search">
             <div className="form-outline">
               <label></label>
               <input
-                type="text"
+                type="search"
                 className="form-control"
                 placeholder="search by city..."
-                onChange={(event) => { setSearchTerm(event.target.value) }}
+                onChange={(event) => {
+                  setSearchTerm(event.target.value);
+                }}
               />
             </div>
           </div>
           <br />
           <div className="row">
-            {restaurants.filter((restaurant) => {
-              if (searchTerm == "") {
-                return restaurant;
-              } else if (restaurant.city.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
-                return restaurant;
-              }
-            })
+            {restaurants
+              .filter((restaurant) => {
+                if (searchTerm == "") {
+                  return restaurant;
+                } else if (
+                  restaurant.city
+                    .toLowerCase()
+                    .includes(searchTerm.toLocaleLowerCase())
+                ) {
+                  return restaurant;
+                }
+              })
               .map((restaurant) => {
                 return (
                   <>
@@ -126,9 +130,6 @@ function App() {
                   </>
                 );
               })}
-
-
-
           </div>
         </div>
       </div>
