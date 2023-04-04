@@ -38,7 +38,7 @@ const Add = (props) => {
                   type="text"
                   name="restName"
                   onChange={handleChange}
-                  value={restaurant.name}
+                  value={restaurant.restName}
                 />
               </div>
               <br />

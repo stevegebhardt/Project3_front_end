@@ -121,7 +121,7 @@ function App() {
               .map((restaurant) => {
                 return (
                   <>
-                    <div className="col-md-4">
+                    <div className="col-md-4" key={restaurant.id}>
                       <Restaurant
                         restaurant={restaurant}
                         handleEdit={handleEdit}
