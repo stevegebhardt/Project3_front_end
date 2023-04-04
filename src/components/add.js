@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from 'react'
 
 const Add = (props) => {
   const [restaurant, setRestaurant] = useState({
@@ -14,9 +14,10 @@ const Add = (props) => {
     cuisine: "",
   });
 
-  const handleChange = (event) => {
-    setRestaurant({ ...restaurant, [event.target.name]: event.target.value });
-  };
+    const handleChange = (event) => {
+        setRestaurant({ ...restaurant, [event.target.name]: event.target.value });
+    };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,6 +25,7 @@ const Add = (props) => {
     props.toggleShowAdd();
     props.toggleMenu();
   };
+
 
   return (
     <>
