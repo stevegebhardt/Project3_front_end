@@ -10,7 +10,7 @@ const Restaurant = (props) => {
   return (
     <>
       <div className="card mb-4 box-shadow">
-        <div className="carc-img-top">
+        <div className="card-img-top">
           <img src={props.restaurant.restImg} />
         </div>
         <div className="card-body">

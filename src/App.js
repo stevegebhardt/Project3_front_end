@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Restaurant from "./components/restaurant";
+import Restaurant from "./components/restaurant"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Menu from "./components/hambuger-menu";
 
@@ -38,7 +38,6 @@ function App() {
   };
 
   const handleDelete = (deletedRestaurant) => {
-    console.log(deletedRestaurant._id);
     axios
       .delete("http://localhost:3000/restaurants/" + deletedRestaurant._id)
       .then((response) => {
@@ -139,3 +138,4 @@ function App() {
 }
 
 export default App;
+
