@@ -12,7 +12,7 @@ function App() {
 
   const getRestaurants = () => {
     axios
-      .get("https://projec3-back-end.herokuapp.com/restaurants")
+      .get("https://my-chelin-back-end.onrender.com/restaurants")
       .then((response) => {
         setRestaurants(response.data);
       });
@@ -20,7 +20,7 @@ function App() {
 
   const handleCreate = (data) => {
     axios
-      .post("https://projec3-back-end.herokuapp.com/restaurants", data)
+      .post("https://my-chelin-back-end.onrender.com/restaurants", data)
       .then((response) => {
         console.log(response);
         let newRestaurants = [...restaurants, response.data];
@@ -32,7 +32,7 @@ function App() {
   const handleEdit = (data) => {
     axios
       .put(
-        "https://projec3-back-end.herokuapp.com/restaurants/" + data._id,
+        "https://my-chelin-back-end.onrender.com/restaurants/" + data._id,
         data
       )
       .then((response) => {
@@ -47,7 +47,7 @@ function App() {
   const handleDelete = (deletedRestaurant) => {
     axios
       .delete(
-        "https://projec3-back-end.herokuapp.com/restaurants/" +
+        "https://my-chelin-back-end.onrender.com/restaurants/" +
           deletedRestaurant._id
       )
       .then((response) => {
